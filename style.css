@@ -1,0 +1,61 @@
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: radial-gradient(circle, #1a001a, #000);
+  color: white;
+  overflow: hidden;
+}
+
+.screen {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.hidden { display: none; }
+
+.title { font-size: 48px; letter-spacing: 4px; color: #ff4da6; text-shadow: 0 0 20px #ff4da6; }
+.subtitle { opacity: 0.8; }
+
+.choices button {
+  font-size: 40px; margin: 15px; padding: 15px 25px;
+  border-radius: 12px; border: none; cursor: pointer;
+  background: #111; color: white; box-shadow: 0 0 10px #ff4da6;
+}
+
+#startBtn {
+  margin-top: 25px; padding: 12px 35px; font-size: 18px;
+  border-radius: 25px; border: none;
+  background: linear-gradient(45deg, #ff4da6, #ff0066);
+  color: white; cursor: pointer; box-shadow: 0 0 20px #ff4da6;
+}
+
+#hud { margin-bottom: 10px; font-size: 18px; }
+
+#gameArea {
+  position: relative; width: 420px; height: 550px;
+  background: linear-gradient(180deg, #220022, #000);
+  border-radius: 20px; border: 2px solid #ff4da6;
+  box-shadow: 0 0 30px #ff4da6; overflow: hidden;
+}
+
+#player {
+  position: absolute; top: 500px; font-size: 45px;
+  left: 50%; transform: translateX(-50%);
+}
+
+.item { position: absolute; top: 0; font-size: 30px; }
+
+button {
+  padding: 10px 25px; margin: 10px;
+  border: none; border-radius: 20px;
+  background: #ff0066; color: white; cursor: pointer;
+}
+
+.choices button.selected {
+  box-shadow: 0 0 20px red;
+}

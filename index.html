@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Catch Love Game</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- HOME SCREEN -->
+<div id="home" class="screen">
+  <h1 class="title">💘 CATCH LOVE</h1>
+  <p class="subtitle">Choose your character</p>
+
+  <div class="choices">
+    <button onclick="selectPlayer('male')">👨</button>
+    <button onclick="selectPlayer('female')">👩</button>
+  </div>
+
+  <button id="startBtn" disabled>START</button>
+</div>
+
+<!-- GAME SCREEN -->
+<div id="game" class="screen hidden">
+  <div id="hud">
+    <span id="score">Score: 0</span>
+  </div>
+  <div id="gameArea">
+    <div id="player"></div>
+  </div>
+</div>
+
+<!-- GAME OVER SCREEN -->
+<div id="gameOver" class="screen hidden">
+  <h2>💔 GAME OVER</h2>
+  <p>Final Score: <span id="finalScore">0</span></p>
+  <button id="playAgainBtn">Play Again</button>
+  <button id="homeBtn">Home</button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
