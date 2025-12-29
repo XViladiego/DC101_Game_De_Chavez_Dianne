@@ -20,15 +20,20 @@ let gameInterval;
 let playerX = 190;
 const playerY = 500;
 
+// SOUND EFFECTS
+const catchSound = new Audio("assets/sounds/catch.wav");
+const gameOverSound = new Audio("assets/sounds/gameover.wav");
+const bgMusic = new Audio("assets/sounds/bg_music.mp3");
+bgMusic.loop = true;
+bgMusic.volume = 0.3;
+
 // CHARACTER SELECTION
 function selectPlayer(type){
   player.textContent = type === "male" ? "👨" : "👩";
   startBtn.disabled = false;
 
   // REMOVE previous selection glow
-  document.querySelectorAll('.choices button').forEach(btn=>{
-    btn.classList.remove('selected');
-  });
+  document.querySelectorAll('.choices button').forEach(btn=>btn.classList.remove('selected'));
 
   // ADD glow to selected button
   const selectedBtn = type === "male" 
@@ -36,7 +41,6 @@ function selectPlayer(type){
     : document.querySelector('.choices button:nth-child(2)');
   selectedBtn.classList.add('selected');
 }
-
 
 // START GAME
 function startGame(){
@@ -56,6 +60,8 @@ function startGame(){
   clearInterval(gameInterval);
 
   gameInterval = setInterval(createItem, 700);
+
+  bgMusic.play(); // PLAY BACKGROUND MUSIC
 }
 
 // CREATE FALLING ITEMS
@@ -90,10 +96,12 @@ function createItem(){
 
     if(y + 30 >= playerY && itemRight > playerLeft && itemLeft < playerRight){
       if(isBroken){ 
-        endGame(); // trigger game over
+        gameOverSound.play(); // PLAY GAME OVER SOUND
+        endGame(); 
       } else { 
         score++; 
         scoreDisplay.textContent = "Score: " + score; 
+        catchSound.play(); // PLAY CATCH SOUND
       }
       clearInterval(fall);
       item.remove();
@@ -110,6 +118,9 @@ function endGame(){
   finalScore.textContent = score;
   game.classList.add("hidden");
   gameOverScreen.classList.remove("hidden");
+
+  bgMusic.pause();
+  bgMusic.currentTime = 0;
 }
 
 // PLAYER CONTROL
